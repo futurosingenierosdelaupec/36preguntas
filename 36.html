@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>36 Preguntas de Arthur Aron</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffc0cb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        h1 {
+            font-size: 1.5em;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="question">Las 36 preguntas de Arthur Aron son un conjunto de preguntas diseñadas para crear intimidad y cercanía emocional entre dos personas, especialmente entre desconocidos.</h1>
+    <div class="buttons">
+        <button onclick="goBack()">Regresar</button>
+        <button onclick="nextQuestion()">Continuar</button>
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+        const questions = [
+        "Las 36 preguntas para conectar, por Arthur Aron ",    
+        "Este experimento explora la intimidad en las relaciones interpersonales, demostrando que al formular las preguntas correctas y responder sinceramente, se generaba un acercamiento progresivo (no necesariamente romántico) entre dos individuos desconocidos.",
+        "Estas 36 preguntas se encuentran desglosadas en tres series sucesivas cada una diseñada para ser más indagatoria que la anterior",
+        "Al terminar el cuestionario, los participantes deben verse a  los ojos durante cuatro minutos",
+            "PRIMERA PARTE",
+            "1. Si pudieras elegir a cualquier persona en el mundo, ¿a quién querrías invitar a cenar?",
+            "2. ¿Te gustaría ser famoso? ¿De qué manera?",
+            "3. Antes de hacer una llamada, ¿practicas lo que vas a decir? ¿Por qué?",
+            "4. ¿Qué sería un día perfecto para ti?",
+            "5. ¿Cuándo fue la última vez que cantaste a solas? ¿Y para otra persona?",
+            "6. Si pudieras vivir hasta los 90 años y tener la mente o el cuerpo de una persona de 30 años durante los últimos 60 años de tu vida, ¿cuál elegirías?",
+            "7. ¿Tienes un presentimiento secreto sobre cómo morirás?",
+            "8. Nombra tres cosas que aparentemente tengamos en común.",
+            "9. ¿Por qué aspecto de tu vida te sientes más agradecid@?",
+            "10. Si pudieras cambiar algo sobre la forma en que te criaron, ¿qué sería?",
+            "11. Cuenta la historia de tu vida en cuatro minutos.",
+            "12. Si pudieras despertar mañana con una nueva cualidad o habilidad, ¿cuál sería?",
+            "SEGUNDA PARTE",
+            "1. Si una bola de cristal pudiera decirte la verdad sobre ti, tu vida, el futuro o cualquier otra cosa, ¿qué querrías saber?",
+            "2. ¿Hay algo que hayas soñado hacer durante mucho tiempo? ¿Por qué no lo has hecho?",
+            "3. ¿Cuál es el mayor logro que has conseguido en tu vida?",
+            "4. ¿Qué es lo que más valoras en una amistad?",
+            "5. ¿Cuál es tu recuerdo más valioso?",
+            "6. ¿Cuál es tu recuerdo más doloroso?",
+            "7. Si supieras que vas a morir en un año, ¿cambiarías algo en tu manera de vivir? ¿Por qué?",
+            "8. ¿Qué significa la amistad para ti?",
+            "9. ¿Qué importancia tiene el amor y el afecto en tu vida?",
+            "10. Compartan de forma alterna cinco caracteristicas que consideren positivas de ustedes.",
+            "11. ¿Tu familia es cercana y cariñosa? Crees que tu infancia fue más feliz que la de los demás?",
+            "12. Cómo te sientes respecto a tu relación con tu madre?",
+            "TERCERA PARTE",
+            "1. Di tres frases usando el pronombre “nosotros”. Por ejemplo, nosotros estamos en esta habitación sintiendo...”",
+            "2. Completa esta frase: “Ojalá tuviera alguien con quien compartir...”",
+            "3. Si tú te convirtieras en un amigo íntimo de la otra persona, comparte lo que sería importante que él/ella sepa.",
+            "4. Dile a la otra persona qué es lo qué te gusta de ella, sé muy honesto, di las cosas que no le dirías a alguien que recién conoces.",
+            "5. Comparte un momento incómodo en tu vida.",
+            "6. ¿Cuándo lloraste por última vez delante de otra persona? ¿Y a solas?",
+            "7. Dile a la otra persona algo que te gusta de ella.",
+            "8. ¿Hay algo que sea demasiado serio como para bromear al respecto?",
+            "9. Si murieras esta noche sin la oportunidad de comunicarte con alguien, ¿qué lamentarías no haber dicho? ¿Por qué no lo has dicho todavía?",
+            "10. Tu casa y todo lo que tienes se incendia. Después de salvar a tus seres queridos y mascotas, solo tienes tiempo para entrar una última vez y salvar un objeto. ¿Qué sería? ¿Por qué?",
+            "11. De todas las personas que forman tu familia, ¿qué muerte te parecería más dolorosa? ¿Por qué?",
+            "12. Comparte un problema personal y pídele consejos a la otra persona para poder manejarlo. Además, preguntale tambien cómo cree que te sientes respecto al problema que has contado.",
+            "Ahora deben mirarse a los ojos durante 4 minutos en silencio.",
+            "FIN"
+        ];
+
+        function updateQuestion() {
+            const isFirst = currentQuestion === 0;
+            const isLast = currentQuestion === questions.length - 1;
+            if (isFirst || isLast) {
+                document.getElementById("question").innerHTML = `<strong>${questions[currentQuestion]}</strong>`;
+            } else {
+                document.getElementById("question").textContent = questions[currentQuestion];
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                updateQuestion();
+            }
+        }
+
+        function goBack() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                updateQuestion();
+            }
+        }
+
+        // Inicializar con la primera pregunta
+        updateQuestion();
+    </script>
+</body>
+</html>
